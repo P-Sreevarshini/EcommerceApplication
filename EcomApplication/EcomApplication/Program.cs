@@ -51,21 +51,6 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
-// Add authentication services
-// builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-//     .AddJwtBearer(options =>
-//     {
-//         options.TokenValidationParameters = new TokenValidationParameters
-//         {
-//             ValidateIssuer = true,
-//             ValidateAudience = true,
-//             ValidateLifetime = true,
-//             ValidateIssuerSigningKey = true,
-//             ValidIssuer = builder.Configuration["JWT:Issuer"],
-//             ValidAudience = builder.Configuration["JWT:Audience"],
-//             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"]))
-//         };
-//     });
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -88,28 +73,6 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddScoped<IUserService, UserServiceImpl>();
 builder.Services.AddScoped<IProductService, ProductServiceImpl>();
 
-// var app = builder.Build();
-
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
-
-// // app.UseHttpsRedirection();
-// app.UseRouting();
-
-// app.UseCors("AllowOrigin");
-
-// app.UseAuthentication();
-// app.UseAuthorization();
-
-// app.UseEndpoints(endpoints =>
-// {
-//     endpoints.MapControllers();
-// }); 
-
-// app.Run();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
