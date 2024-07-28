@@ -1,0 +1,73 @@
+<div class="container">
+  <h1>Registration</h1>
+ 
+  <form (ngSubmit)="register()" #registrationForm="ngForm" novalidate>
+    <div class="validation">
+      <label for="username">Username<span class="asterisk">*</span>:</label>
+      <div class="error-message1"></div>
+    </div>
+    <input type="text" id="username" [(ngModel)]="userName" name="username" [ngModelOptions]="{standalone: true}" required
+           #usernameNgModel="ngModel">
+    <div *ngIf="usernameNgModel.invalid && (usernameNgModel.dirty || usernameNgModel.touched)"
+         class="error-message">Username is required</div>
+
+    <label for="email">Email<span class="asterisk">*</span>:</label>
+    <input type="text" id="email" [(ngModel)]="email" name="email" [ngModelOptions]="{standalone: true}"
+           required email #emailNgModel="ngModel">
+    <div *ngIf="emailNgModel.invalid && (emailNgModel.dirty || emailNgModel.touched)"
+         class="error-message">
+      <div *ngIf="emailNgModel.errors.required">Email is required</div>
+      <div *ngIf="emailNgModel.errors.email">Invalid email format</div>
+    </div>
+
+    <div class="validation">
+      <label for="password">Password<span class="asterisk">*</span>:</label>
+      <div class="error-message1"></div>
+    </div>
+    <input type="password" id="password" [(ngModel)]="password" name="password" [ngModelOptions]="{standalone: true}" required
+           #passwordNgModel="ngModel">
+    <div *ngIf="passwordNgModel.invalid && (passwordNgModel.dirty || passwordNgModel.touched)"
+         class="error-message">Password is required</div>
+    <div *ngIf="passwordNgModel.valid && !isPasswordComplex(password)" class="error-message">
+      Password must include at least one uppercase letter, one lowercase letter, one digit, and one special character
+    </div>
+
+    <div class="validation">
+      <label for="confirmPassword">Confirm Password<span class="asterisk">*</span>:</label>
+      <div class="error-message1"></div>
+    </div>
+    <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" [ngModelOptions]="{standalone: true}" required
+           #confirmPasswordNgModel="ngModel">
+    <div *ngIf="confirmPasswordNgModel.invalid && (confirmPasswordNgModel.dirty || confirmPasswordNgModel.touched)"
+         class="error-message">Confirm Password is required</div>
+    <div *ngIf="password !== confirmPassword && !passwordMismatch" class="error-message">
+      Passwords do not match
+    </div>
+
+    <label for="mobile">Mobile Number<span class="asterisk">*</span>:</label>
+    <input type="tel" id="mobile" [(ngModel)]="mobileNumber" name="mobile" [ngModelOptions]="{standalone: true}"
+           required pattern="^\d{10}$" #mobileNgModel="ngModel">
+   
+    <div *ngIf="mobileNgModel.invalid && (mobileNgModel.dirty || mobileNgModel.touched)"
+         class="error-message">
+      <div *ngIf="mobileNgModel.errors.required">Mobile number is required</div>
+      <div *ngIf="mobileNgModel.errors.pattern">Invalid mobile number format</div>
+    </div>
+
+    <div class="validation">
+      <label for="role">Role<span class="asterisk">*</span>:</label>
+      <div class="error-message1"></div>
+    </div>
+    <select id="role" [(ngModel)]="role" name="role" required #roleNgModel="ngModel">
+      <option value="" disabled>Select a role</option>
+      <option value="Admin">Admin</option>
+      <option value="Customer">Customer</option>
+    </select>
+    <div *ngIf="roleNgModel.invalid && (roleNgModel.dirty || roleNgModel.touched)"
+         class="error-message">Role is required</div>
+
+    <div *ngIf="passwordMismatch" class="error-message">Passwords do not match</div>
+
+    <button type="submit" [disabled]="registrationForm.invalid || password !== confirmPassword">Register</button>
+  </form>
+</div>

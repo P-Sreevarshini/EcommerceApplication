@@ -1,0 +1,38 @@
+<table>
+  <thead>
+    <tr>
+      <!-- <th>Product ID</th> -->
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th *ngIf="userRole === 'Admin'">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <ng-container *ngIf="selectedProduct !== product; else editMode">
+        <!-- <td>{{ product.productId }}</td> -->
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.category }}</td>
+        <td *ngIf="userRole === 'Admin'">
+          <button (click)="editProduct(product)" class="edit-btn">Edit</button>
+          <button (click)="deleteProduct(product)" class="delete-btn">Delete</button>
+        </td>
+      </ng-container>
+      <ng-template #editMode>
+        <!-- <td><input [(ngModel)]="product.productId" readonly></td> -->
+        <td><input [(ngModel)]="product.name"></td>
+        <td><input [(ngModel)]="product.description"></td>
+        <td><input [(ngModel)]="product.price"></td>
+        <td><input [(ngModel)]="product.category"></td>
+        <td *ngIf="userRole === 'Admin'">
+          <button (click)="updateProduct(product)" class="save-btn">Save</button>
+          <button (click)="cancelEdit()" class="cancel-btn">Cancel</button>
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>

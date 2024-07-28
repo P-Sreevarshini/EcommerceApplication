@@ -1,0 +1,16 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #ff0000;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+  }
+  

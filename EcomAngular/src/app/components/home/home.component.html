@@ -1,0 +1,27 @@
+<!-- 
+  <div class="card-container">
+  <div class="card" style="background-color: #e9f992de" routerLink="/view/Product">
+    <li><a>View Product Details</a></li>
+  </div>
+</div>
+<div class="card-container">
+  <div class="card" style="background-color: #e9f992de" routerLink="/add/Product">
+    <li><a>Add Product Details</a></li>
+  </div>
+</div>
+<button class="logout-button" (click)="logout()">Logout</button>
+
+
+   -->
+   <div class="card-container">
+    <div class="card" style="background-color: #e9f992de" routerLink="/view/Product">
+      <li><a>View Product Details</a></li>
+    </div>
+  </div>
+  <div class="card-container" *ngIf="isAdmin()">
+    <div class="card" style="background-color: #e9f992de" routerLink="/add/Product">
+      <li><a>Add Product Details</a></li>
+    </div>
+  </div>
+  <button class="logout-button" (click)="logout()">Logout</button>
+  

@@ -1,0 +1,23 @@
+<form #form="ngForm" (ngSubmit)="addProduct(form)">
+  <!-- <div *ngIf="showProductId">
+    <label for="productId">Product ID:</label>
+    <input type="number" id="productId" [(ngModel)]="newProduct.productId" name="productId" readonly>
+  </div> -->
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="newProduct.name" name="name" required>
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <input type="text" id="description" [(ngModel)]="newProduct.description" name="description" required>
+  </div>
+  <div>
+    <label for="price">Price:</label>
+    <input type="number" id="price" [(ngModel)]="newProduct.price" name="price" required>
+  </div>
+  <div>
+    <label for="category">Category:</label>
+    <input type="text" id="category" [(ngModel)]="newProduct.category" name="category" required>
+  </div>
+  <button type="submit">Add Product</button>
+</form>

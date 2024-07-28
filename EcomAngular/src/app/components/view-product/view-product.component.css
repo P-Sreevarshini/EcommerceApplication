@@ -1,0 +1,52 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ddd; /* Border color for table */
+}
+
+th {
+  background-color: #f2f2f2; /* Header background color */
+  text-align: left;
+  padding: 8px;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd; /* Border color for table cells */
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Alternate row background color */
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-btn {
+  background-color: #4CAF50; 
+  color: white;
+}
+
+.delete-btn {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+.save-btn {
+  background-color: #008CBA; /* Blue */
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+}
