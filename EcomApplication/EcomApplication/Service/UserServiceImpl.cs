@@ -49,37 +49,7 @@ namespace ECommerceApp.Services
 
             return (1, "User created successfully!");
         }
-
-        //public async Task<(int, string, string, long, string, string)> Login(Login model)
-        //{
-        //    var user = await userManager.FindByEmailAsync(model.Email);
-        //    var users = await context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
-
-        //    if (user == null)
-        //        return (0, "Invalid username", null, 0, null, null);
-
-        //    if (!await userManager.CheckPasswordAsync(user, model.Password))
-        //        return (0, "Invalid password", null, 0, null, null);
-
-        //    var userRoles = await userManager.GetRolesAsync(user);
-
-        //    var authClaims = new List<Claim>
-        //{
-        //    new Claim(ClaimTypes.Name, user.UserName),
-        //    new Claim(ClaimTypes.NameIdentifier, users.UserId.ToString()),
-        //    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-        //    new Claim(ClaimTypes.Role, users.UserRole)
-        //};
-
-        //    foreach (var userRole in userRoles)
-        //    {
-        //        authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-        //    }
-
-        //    string token = GenerateToken(authClaims);
-
-        //    return (1, token, user.Email, users.UserId, users.UserRole, users.Username);
-        //}
+        
         public async Task<(int, string, string, long, string, string)> Login(Login model)
         {
             var user = await userManager.FindByEmailAsync(model.Email);
